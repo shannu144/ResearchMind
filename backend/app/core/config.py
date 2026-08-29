@@ -15,12 +15,21 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "researchmind_super_secret_key_change_in_production"
 
     # CORS
-    CORS_ORIGINS: List[str] = [
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:5173",
-    ]
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000,http://127.0.0.1:5173,*"
+
+    @property
+    def cors_origins_list(self) -> List[str]:
+        if not self.CORS_ORIGINS or self.CORS_ORIGINS.strip() == "*":
+            return ["*"]
+        if self.CORS_ORIGINS.startswith("[") and self.CORS_ORIGINS.endswith("]"):
+            try:
+                import json
+                parsed = json.loads(self.CORS_ORIGINS)
+                if isinstance(parsed, list):
+                    return [str(x).strip() for x in parsed]
+            except Exception:
+                pass
+        return [i.strip() for i in self.CORS_ORIGINS.split(",") if i.strip()]
 
     # Database
     DATABASE_URL: str = "sqlite+aiosqlite:///./researchmind.db"
