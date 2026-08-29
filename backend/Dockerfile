@@ -9,7 +9,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Install python dependencies
+# Install CPU-only PyTorch first to avoid pulling 2GB+ NVIDIA CUDA packages.
+# This dramatically reduces import time from ~30s to ~3s on Render free tier.
+RUN pip install --no-cache-dir \
+    torch==2.2.0+cpu \
+    --extra-index-url https://download.pytorch.org/whl/cpu
+
+# Install remaining python dependencies (torch already satisfied above)
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 

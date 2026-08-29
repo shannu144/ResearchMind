@@ -3,11 +3,6 @@ from typing import Optional
 from app.core.logging import logger
 from app.schemas.nlp_schemas import SummarizationResponse
 
-try:
-    from transformers import pipeline as hf_pipeline
-except ImportError:
-    hf_pipeline = None
-
 
 class TransformerPipelineService:
     """
@@ -20,8 +15,9 @@ class TransformerPipelineService:
         # Lazy initialization to avoid startup delay if model weights are not pre-downloaded
 
     def _init_summarizer(self):
-        if self.summarizer is None and hf_pipeline is not None:
+        if self.summarizer is None:
             try:
+                from transformers import pipeline as hf_pipeline
                 self.summarizer = hf_pipeline(
                     "summarization", model=self.model_name, device=-1
                 )

@@ -3,11 +3,6 @@ from typing import List
 from app.core.config import settings
 from app.core.logging import logger
 
-try:
-    from sentence_transformers import SentenceTransformer
-except ImportError:
-    SentenceTransformer = None
-
 
 class EmbeddingService:
     """
@@ -21,8 +16,9 @@ class EmbeddingService:
         self.model = None
 
     def _init_model(self):
-        if self.model is None and SentenceTransformer is not None:
+        if self.model is None:
             try:
+                from sentence_transformers import SentenceTransformer
                 self.model = SentenceTransformer(self.model_name)
                 logger.info(f"Loaded SentenceTransformer model: {self.model_name}")
             except Exception as e:
