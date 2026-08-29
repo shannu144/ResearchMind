@@ -1,0 +1,8 @@
+
+        Abstract: In this paper we introduce an attention mechanism for neural machine translation.
+        Traditional recurrent neural networks struggle with long range dependencies.
+        Our transformer architecture uses multi-head self-attention to capture global context.
+        Experiments on WMT 2014 translation show state-of-the-art BLEU score of 28.4.
+        Limitations include quadratic complexity with respect to sequence length.
+        Future work will explore linear attention approximations and sparse attention patterns.
+        

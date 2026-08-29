@@ -1,0 +1,2 @@
+Page 1: Attention Is All You Need paper. Transformers use self-attention mechanisms.
+Page 2: RAG pipelines retrieve top-k vector chunks.

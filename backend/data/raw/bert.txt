@@ -1,0 +1,1 @@
+BERT uses bidirectional transformers pretrained on masked language modeling. Limitations include high compute cost. Future work includes smaller distilled models.

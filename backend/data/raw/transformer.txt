@@ -1,0 +1,1 @@
+Attention mechanisms were introduced by Vaswani et al. Transformers replaced RNNs for NLP tasks. Future work includes efficient attention for long sequences.

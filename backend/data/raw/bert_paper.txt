@@ -1,0 +1,7 @@
+
+        Abstract: We present BERT, a bidirectional transformer pretrained on masked language modeling.
+        Unlike previous unidirectional models, BERT fuses left and right context in all layers.
+        We fine-tune on GLUE benchmark achieving 80.5% average score.
+        Limitations include high memory consumption during pretraining and slow inference throughput.
+        Future directions include knowledge distillation and model quantization for mobile edge devices.
+        

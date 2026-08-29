@@ -1,0 +1,1 @@
+Page 1: Transformers were introduced by Vaswani et al. in 2017. The architecture uses multi-head self-attention mechanisms to model global dependencies. Page 2: BERT is a bidirectional transformer model pretrained on large corpora. It achieves state-of-the-art results on multiple NLP benchmarks.
